@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git code') {
+            steps {
+                git 'https://github.com/dbarnett/python-helloworld.git'
+
+            }
+        }
+        stage('Build'){
+            steps{
+                sh 'python3 setup.py bdist_wheel'
+            }
+        }
+    }
+}
